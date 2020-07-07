@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
-import { routerWithSubRoutes } from './routerWithSubRoutes.js'
+import { RouterWithSubRoutes } from './routerWithSubRoutes.js'
 
 
 export const RenderRoutes = (routes, authed, authPath = '/login') => {
@@ -9,7 +9,7 @@ export const RenderRoutes = (routes, authed, authPath = '/login') => {
             <Switch>
                 {
                     routes.map((route, index) => {
-                        return RouteWithSubRoutes(route, index, authed, authPath)
+                        return RouterWithSubRoutes(route, index, authed, authPath)
                     })
                 }
             </Switch>

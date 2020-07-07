@@ -1,29 +1,30 @@
 import React from 'react'
 import {Route, Redirect, RouteComponentProps} from 'react-router-dom'
 
-// RouteInterface {
-//     path: string
-//     component: any
-//     routes?: RouteInterface[]
-//     exact?: boolean
-//     title?: string
-//     name?: string
-//     auth?: boolean  // 权限判断
-// }
+
 
 /**
  * 子路由中间件操作
- * @param route 
+ * @param route
  * @param index
  * @param authed
  * @param authPath
+ * RouteInterface {
+    path: string
+    component: any
+    routes?: RouteInterface[]
+    exact?: boolean
+    title?: string
+    name?: string
+    auth?: boolean  // 权限判断
+ }
  */
-export const routerWithSubRoutes = (route, index, authed, authPath) => {
+export const RouterWithSubRoutes = (route, index, authed, authPath) => {
 
     return (
         <Route
-            key={index} 
-            path={route.path} 
+            key={index}
+            path={route.path}
             exact={route.exact}
             render={(props) => {
             if (!route.auth || authed || route.path === authPath) {
