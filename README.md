@@ -847,7 +847,7 @@ const HelloWorldPage = import('@/pages/demo');
 
 ```
 $ npm i -D eslint babel-eslint eslint-loader eslint-plugin-jsx-control-statements
-$ npm i -D eslint-plugin-react @typescript-eslint/parser @typescript-eslint/eslint-plugin 
+$ npm i -D eslint-plugin-react @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
 
 然后在根目录新建`eslint`配置文件`.eslintrc.js`。
@@ -925,9 +925,10 @@ module.exports = {
 ```json
 "husky": {
     "hooks": {
-        "pre-commit": "lint-staged"
+        "pre-commit": "lint-staged",
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-},
+}
 "lint-staged": {
     "src/**/*.{jsx,js,tsx,ts}": [
         "prettier --write",
