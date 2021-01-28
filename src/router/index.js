@@ -1,28 +1,26 @@
-import loadable from '@loadable/component'
-// import Login from '../page/login'
-// import Device from '../page/device'
+import Login from '@/pages/login'
+import Device from '@/pages/device'
+import NoMatch from '@/pages/404'
 
 export const routes = [
     {
         path: '/',
         exact: true,
-        component: loadable(() => import('../pages/login')),
+        component: Login,
         name: 'login',
-        title: 'lofin',
-        auth: false
+        title: 'login',
     },
     {
         path: '/device',
         exact: true,
-        component: loadable(() => import('../pages/device')),
+        component: Device,
         name: 'device',
         title: 'device',
-        auth: false
     },
     {
         path: '*',
-        component: loadable(() => import('../pages/404')),
+        component: NoMatch,
         name: '404',
         title: '404',
-    }
+    },
 ]

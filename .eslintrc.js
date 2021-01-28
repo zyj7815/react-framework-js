@@ -36,6 +36,10 @@ module.exports = {
         "no-extra-semi": 2, // 禁止不必要的分号
         "quotes": ['error', 'single'], // 强制使用单引号
         "no-unused-vars": 0, // 不允许未定义的变量
-        "jsx-control-statements/jsx-use-if-tag": 0
+        "jsx-control-statements/jsx-use-if-tag": 0,
+        "react/prop-types": 0,
+        "jsx-control-statements/jsx-jcs-no-undef": 0,
+        "no-control-regex": 0 // 正则表达式中是否出现控制字符。
+
     }
 };

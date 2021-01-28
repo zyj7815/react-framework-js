@@ -40,18 +40,18 @@ module.exports = merge(webpackConfig, {
     module: {
         rules: [
             // 把这个配置放在所有loader之前
-            // {
-            //     enforce: 'pre',
-            //     test: /\.js|jsx?$/,
-            //     exclude: /node_modules/,
-            //     include: [APP_PATH],
-            //     loader: 'eslint-loader',
-            //     options: {
-            //         emitWarning: true, // 这个配置需要打开，才能在控制台输出warning信息
-            //         emitError: true, // 这个配置需要打开，才能在控制台输出error信息
-            //         fix: true // 是否自动修复，如果是，每次保存时会自动修复可以修复的部分
-            //     }
-            // },
+            {
+                enforce: 'pre',
+                test: /\.js|jsx?$/,
+                exclude: /node_modules/,
+                include: [APP_PATH],
+                loader: 'eslint-loader',
+                options: {
+                    emitWarning: true, // 这个配置需要打开，才能在控制台输出warning信息
+                    emitError: true, // 这个配置需要打开，才能在控制台输出error信息
+                    fix: true // 是否自动修复，如果是，每次保存时会自动修复可以修复的部分
+                }
+            },
             {
                 oneOf: [
                     {
@@ -65,12 +65,21 @@ module.exports = merge(webpackConfig, {
                             {
                                 loader: 'babel-loader',
                                 options: {
-                                    presets: [
-                                        '@babel/preset-react',  // jsx支持
-                                        ['@babel/preset-env', { useBuiltIns: 'usage', corejs: 2 }] // 按需使用polyfill
-                                    ],
+                                    presets: [["@babel/preset-env", {
+                                        targets: {
+                                            edge: "17",
+                                            firefox: "60",
+                                            chrome: "67",
+                                            safari: "11.1",
+                                            ie: "11"
+                                        },
+                                        useBuiltIns: 'entry',
+                                        corejs: 2
+                                    }]],
                                     plugins: [
                                         '@babel/plugin-syntax-dynamic-import',
+                                        "@babel/plugin-proposal-object-rest-spread",
+                                        ["@babel/plugin-proposal-decorators", { "legacy": true }],
                                         ['@babel/plugin-proposal-class-properties', { 'loose': true }] // class中的箭头函数中的this指向组件
                                     ],
                                     cacheDirectory: true // 加快编译速度
@@ -124,9 +133,9 @@ module.exports = merge(webpackConfig, {
     },
     resolve: {
         extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
-        // alias: {
-        //     '@': path.resolve(__dirname, '../src/')
-        // }
+        alias: {
+            '@': path.resolve(__dirname, '../src/')
+        }
     },
     plugins: [
         // 清理打包目录

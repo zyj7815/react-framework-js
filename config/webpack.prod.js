@@ -108,13 +108,13 @@ module.exports = merge.smart(baseWebpackConfig, {
             filename: 'css/[name].[contenthash:8].css'
             // chunkFilename: '[name].[contenthash:8].chunk.css'
         }),
-        new CompressionWebpackPlugin({
-            filename: '[path].gz[query]',
-            algorithm: 'gzip',
-            test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-            threshold: 10240,
-            minRatio: 0.8
-        }),
+        // new CompressionWebpackPlugin({
+        //     filename: '[path].gz[query]',
+        //     algorithm: 'gzip',
+        //     test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+        //     threshold: 10240,
+        //     minRatio: 0.8
+        // }),
     ],
     optimization: {
         splitChunks: {
